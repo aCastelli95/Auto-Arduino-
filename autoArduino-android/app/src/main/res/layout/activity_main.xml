@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alanfabiancastelli.autoarduino_android.MainActivity">
+
+    <Button
+        android:id="@+id/botonDispositivosBt"
+        android:layout_width="296dp"
+        android:layout_height="48dp"
+        android:text="Lista de dispositivos"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="193dp"
+        android:layout_height="34dp"
+        android:text="Lista de dispositivos"
+        tools:layout_editor_absoluteX="131dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/listaDispositivos" />
+
+    <ListView
+        android:id="@+id/listaDispositivos"
+        android:layout_width="358dp"
+        android:layout_height="376dp"
+        android:layout_above="@+id/botonDispositivosBt"
+        android:layout_below="@+id/textView"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/botonDispositivosBt"
+        tools:layout_editor_absoluteX="13dp" />
+</android.support.constraint.ConstraintLayout>

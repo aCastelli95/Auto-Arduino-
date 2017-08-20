@@ -153,6 +153,8 @@ void MEF_seguridad::cambio_Estado(char tecla, LiquidCrystal lcd)
 		// Funcionamiento del auto.
 		lcd.setCursor(0, 0);
 		lcd.print("   ENCENDIDO    ");
+
+		// arranque del motor.
 		break;
 	case (APAGADO) :
 
