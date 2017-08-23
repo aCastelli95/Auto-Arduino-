@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -21,16 +19,23 @@ import java.util.UUID;
 
 public class autoControl extends AppCompatActivity {
 
-    Button btnOn, btnOff, btnDis;
-    SeekBar brightness;
-    TextView lumn;
+    /*Button btnOn, btnOff, btnDis;
+
+
+   //SPP UUID. Look for it
+    static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    */
     String address = null;
-    private ProgressDialog progress;
     BluetoothAdapter myBluetooth = null;
     BluetoothSocket btSocket = null;
     private boolean isBtConnected = false;
-    //SPP UUID. Look for it
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private ProgressDialog progress;
+
+    TextView velocimetro;
+    SeekBar velocidad;
+    Button btGiroDerecho, btGiroIzquierdo, btLucesBajas, btLucesAltas, btCruzero;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,53 +43,67 @@ public class autoControl extends AppCompatActivity {
 
         Intent newint = getIntent();
         address = newint.getStringExtra(MainActivity.EXTRA_ADDRESS); //receive the address of the bluetooth device
-
-        //view of the ledControl
         setContentView(R.layout.activity_auto_control);
 
-        //call the widgtes
-        btnOn = (Button)findViewById(R.id.button2);
-        btnOff = (Button)findViewById(R.id.button3);
-        btnDis = (Button)findViewById(R.id.button4);
-        brightness = (SeekBar)findViewById(R.id.acelerar);
-        lumn = (TextView)findViewById(R.id.velocidadTexto);
 
-        new ConnectBT().execute(); //Call the class to connect
 
-        //commands to be sent to bluetooth
+        btGiroDerecho = (Button)findViewById(R.id.boton_Derecha);
+        btGiroIzquierdo = (Button)findViewById(R.id.boton_Izquierda);
+        btLucesAltas = (Button)findViewById(R.id.boton_luces);
+        btLucesBajas = (Button)findViewById(R.id.boton_lucesBajas);
+        btCruzero = (Button)findViewById(R.id.boton_cruzero);
+        velocimetro = (TextView)findViewById(R.id.velocidadTexto);
 
-        btnOn.setOnClickListener(new View.OnClickListener()
+        new ConnectBT().execute();
+
+        btGiroDerecho.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                turnOnLed();      //method to turn on
+
             }
         });
 
-        btnOff.setOnClickListener(new View.OnClickListener() {
+        btGiroIzquierdo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                turnOffLed();   //method to turn off
+
             }
         });
 
-        btnDis.setOnClickListener(new View.OnClickListener()
+        btLucesBajas.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Disconnect(); //close connection
+
+            }
+        });
+        btLucesAltas.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
             }
         });
 
-        brightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        btCruzero.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+            }
+        });
+        velocidad.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser==true)
                 {
-                    lumn.setText(String.valueOf(progress));
+                    velocimetro.setText(String.valueOf(progress));
                     try
                     {
                         btSocket.getOutputStream().write(String.valueOf(progress).getBytes());
@@ -109,57 +128,6 @@ public class autoControl extends AppCompatActivity {
         });
     }
 
-    private void Disconnect()
-    {
-        if (btSocket!=null) //If the btSocket is busy
-        {
-            try
-            {
-                btSocket.close(); //close connection
-            }
-            catch (IOException e)
-            { msg("Error");}
-        }
-        finish(); //return to the first layout
-
-    }
-
-    private void turnOffLed()
-    {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("TF".toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                msg("Error");
-            }
-        }
-    }
-
-    private void turnOnLed()
-    {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("TO".toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                msg("Error");
-            }
-        }
-    }
-
-    // fast way to call Toast
-    private void msg(String s)
-    {
-        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
-    }
-
     private class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
     {
         private boolean ConnectSuccess = true; //if it's here, it's almost connected
@@ -167,7 +135,7 @@ public class autoControl extends AppCompatActivity {
         @Override
         protected void onPreExecute()
         {
-            progress = ProgressDialog.show(autoControl.this, "Conectando...", " Porfavor espere");  //show a progress dialog
+            progress = ProgressDialog.show(autoControl.this, "Conectando!", "Por favor espere!!!");  //show a progress dialog
         }
 
         @Override
@@ -197,15 +165,16 @@ public class autoControl extends AppCompatActivity {
 
             if (!ConnectSuccess)
             {
-                msg("Conexion Fallida. Pruebe nuevamente.");
+                Toast.makeText(getApplicationContext(),"Conexion fallida, por favor vuelva a intentar",Toast.LENGTH_LONG).show();
                 finish();
             }
             else
             {
-                msg("Conectado");
+                Toast.makeText(getApplicationContext(),"Conexion Correcta",Toast.LENGTH_LONG).show();
                 isBtConnected = true;
             }
             progress.dismiss();
         }
     }
+
 }
