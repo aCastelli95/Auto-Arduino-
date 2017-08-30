@@ -14,7 +14,7 @@
     <ProjectGuid>{C5F80730-F44F-4478-BDAE-6634EFC2CA88}</ProjectGuid>
     <RootNamespace>
     </RootNamespace>
-    <ProjectName>SeguridadAuto</ProjectName>
+    <ProjectName>Auto Final</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -48,10 +48,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Arduino\libraries\LiquidCrystal\src;$(ProjectDir)..\..\Arduino\libraries\Keypad;D:\Arduino\libraries;D:\Arduino\hardware\arduino\avr\libraries;$(ProjectDir)..\..\Arduino\libraries;D:\Arduino\hardware\arduino\avr\cores\arduino;D:\Arduino\hardware\arduino\avr\variants\mega;$(ProjectDir)..\SeguridadAuto;D:\Arduino\hardware\tools\avr\avr\include\;D:\Arduino\hardware\tools\avr\avr\include\avr\;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.8.1\include;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>$(ProjectDir)__vm\.SeguridadAuto.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>D:\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src;D:\Arduino\libraries;D:\Arduino\hardware\arduino\avr\libraries;$(ProjectDir)..\..\Arduino\libraries;D:\Arduino\hardware\arduino\avr\cores\arduino;D:\Arduino\hardware\arduino\avr\variants\mega;$(ProjectDir)..\Auto Final;$(ProjectDir)..\SeguridadAuto;D:\Arduino\hardware\tools\avr\avr\include\;D:\Arduino\hardware\tools\avr\avr\include\avr\;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.8.1\include;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ProjectDir)__vm\.Auto Final.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega2560__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=10803;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_ATmega2560__;F_CPU=16000000L;ARDUINO=10803;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -60,14 +60,10 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Arduino\libraries\LiquidCrystal\src;$(ProjectDir)..\libraries\Keypad;$(ProjectDir)..\libraries\Keypad\utility;D:\Arduino\libraries;D:\Arduino\hardware\arduino\avr\libraries;$(ProjectDir)..\libraries;D:\Arduino\hardware\arduino\avr\cores\arduino;D:\Arduino\hardware\arduino\avr\variants\mega;$(ProjectDir)..\SeguridadAuto;D:\Arduino\hardware\tools\avr\avr\include\;D:\Arduino\hardware\tools\avr\avr\include\avr\;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.8.1\include;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;D:\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>$(ProjectDir)__vm\.SeguridadAuto.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <PreprocessorDefinitions>__AVR_ATmega2560__;F_CPU=16000000L;ARDUINO=10803;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -79,20 +75,20 @@
     <ProjectCapability Include="VisualMicro" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SeguridadAuto.ino">
+    <None Include="Auto Final.ino">
       <FileType>CppCode</FileType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CLAVE.h" />
-    <ClInclude Include="MEF_seguridad.h" />
-    <ClInclude Include="RTC.h" />
-    <ClInclude Include="__vm\.SeguridadAuto.vsarduino.h" />
+    <ClInclude Include="..\SeguridadAuto\CLAVE.h" />
+    <ClInclude Include="..\SeguridadAuto\MEF_seguridad.h" />
+    <ClInclude Include="DefinicionesPuertos.h" />
+    <ClInclude Include="__vm\.Auto Final.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CLAVE.cpp" />
-    <ClCompile Include="MEF_seguridad.cpp" />
-    <ClCompile Include="RTC.cpp" />
+    <ClCompile Include="..\SeguridadAuto\CLAVE.cpp" />
+    <ClCompile Include="..\SeguridadAuto\MEF_seguridad.cpp" />
+    <ClCompile Include="DefinicionesPuertos.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

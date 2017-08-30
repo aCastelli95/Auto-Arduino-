@@ -15,11 +15,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SeguridadAuto.ino" />
+    <None Include="Auto Final.ino" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="__vm\.SeguridadAuto.vsarduino.h">
+    <ClInclude Include="__vm\.Auto Final.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\SeguridadAuto\CLAVE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SeguridadAuto\MEF_seguridad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DefinicionesPuertos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\SeguridadAuto\CLAVE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SeguridadAuto\MEF_seguridad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DefinicionesPuertos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
